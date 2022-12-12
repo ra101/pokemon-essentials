@@ -7,7 +7,7 @@
 # - Disable by setting `$game_temp.disable_speed_up` to true
 # - Remap your `Q` button on the F1 screen to change your speedup switch
 # - Default is now faster than original speed
-#     - Change line 33 to `@gamespeed = 0 if @gamespeed == nil`
+#     - Change line 34 to `@gamespeed = 0 if @gamespeed == nil`
 #           for setting original speed as default
 #===============================================================================
 
