@@ -1,6 +1,9 @@
 {
-   "Autosave": [
+   "AutoSave": [
       "Caruban"
+   ],
+   "MultiSave": [
+      "http404error"
    ],
    "Better Speed Up": [
       "Phantombass",

@@ -110,7 +110,7 @@ class PokemonLoad_Scene
         i, commands[i], (show_continue) ? (i == 0) : false, trainer,
         frame_count, stats, map_id, @viewport
       )
-      @sprites["panel#{i}"].x = 48
+      @sprites["panel#{i}"].x = 134
       @sprites["panel#{i}"].y = y
       @sprites["panel#{i}"].pbRefresh
       y += (show_continue && i == 0) ? 224 : 48
@@ -171,14 +171,14 @@ class PokemonLoad_Scene
       @sprites["player"] = TrainerWalkingCharSprite.new(filename, @viewport)
       charwidth  = @sprites["player"].bitmap.width
       charheight = @sprites["player"].bitmap.height
-      @sprites["player"].x        = 112 - (charwidth / 8)
+      @sprites["player"].x        = 198 - (charwidth / 8)
       @sprites["player"].y        = 112 - (charheight / 8)
       @sprites["player"].src_rect = Rect.new(0, 0, charwidth / 4, charheight / 4)
     end
     trainer.party.each_with_index do |pkmn, i|
       @sprites["party#{i}"] = PokemonIconSprite.new(pkmn, @viewport)
       @sprites["party#{i}"].setOffset(PictureOrigin::CENTER)
-      @sprites["party#{i}"].x = 334 + (66 * (i % 2))
+      @sprites["party#{i}"].x = 420 + (66 * (i % 2))
       @sprites["party#{i}"].y = 112 + (50 * (i / 2))
       @sprites["party#{i}"].z = 99999
     end
