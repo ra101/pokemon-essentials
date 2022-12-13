@@ -11,6 +11,14 @@ end
 module Scripts
 
   def self.from_folder(path = "Data/Scripts", rxdata = "Data/Scripts.rxdata")
+    if ARGV[0] != "--force"
+      scripts = File.open(rxdata, 'rb') { |f| Marshal.load(f) }
+      if scripts.length > 10
+        p "Scripts.rxdata already has a bunch of scripts in it. Won't consolidate script files."
+        return
+      end
+    end
+
     scripts = []
     aggregate_from_folder(path, scripts)
     # Save scripts to file
