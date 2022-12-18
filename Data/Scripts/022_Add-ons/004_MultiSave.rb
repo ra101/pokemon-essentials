@@ -463,27 +463,6 @@ end
 #
 #===============================================================================
 module Game
-  # Fix New Game bug (if you saved during an event script)
-  # This fix is from Essentials v20.1 Hotfixes 1.0.5
-  def self.start_new
-    if $game_map && $game_map.events
-      $game_map.events.each_value { |event| event.clear_starting }
-    end
-    $game_temp.common_event_id = 0 if $game_temp
-    $PokemonTemp.begunNewGame = true
-    pbMapInterpreter&.clear
-    pbMapInterpreter&.setup(nil, 0, 0)
-    $scene = Scene_Map.new
-    SaveData.load_new_game_values
-    $MapFactory = PokemonMapFactory.new($data_system.start_map_id)
-    $game_player.moveto($data_system.start_x, $data_system.start_y)
-    $game_player.refresh
-    $PokemonEncounters = PokemonEncounters.new
-    $PokemonEncounters.setup($game_map.map_id)
-    $game_map.autoplay
-    $game_map.update
-  end
-
   # Loads bootup data from save file (if it exists) or creates bootup data (if
   # it doesn't).
   def self.set_up_system
@@ -516,7 +495,7 @@ module Game
   def self.save(slot=nil, auto=false, safe: false)
     slot = $Trainer.save_slot if slot.nil?
     return false if slot.nil?
-    
+
     file_path = SaveData.get_full_path(slot)
     $PokemonGlobal.safesave = safe
     $game_system.save_count += 1
